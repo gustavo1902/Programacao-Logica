@@ -21,3 +21,7 @@ neto(A, B) :-
     
 avo(A,C) :- pai(A,B), pai(B,C).
 avo(A,C) :- mae(A,B), mae(B,C).
+
+tem_filho(X) :- pai(X, _).
+tem_filho(X) :- mae(X, _).
+
