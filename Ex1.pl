@@ -18,3 +18,6 @@ irmao(X, Y) :-
 neto(A, B) :-
     pai(P, A), pai(A, B),
     mae(M, A), mae(A, B).
+    
+avo(A,C) :- pai(A,B), pai(B,C).
+avo(A,C) :- mae(A,B), mae(B,C).
