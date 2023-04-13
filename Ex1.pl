@@ -35,4 +35,3 @@ avoM(A,D) :- pai(A,B), mae(B, D).
 
 tem_filho(X) :- pai(X, _).
 tem_filho(X) :- mae(X, _).
-
