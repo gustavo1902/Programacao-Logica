@@ -1,11 +1,7 @@
 pai(joao,lucas).
-%mae(maria,lucas).
 pai(joao,joaquim).
-%mae(maria,joaquim).
 pai(pedro,silvia).
-%mae(laura,silvia).
 pai(joaquim, bruno).
-%mae(silvia, bruno).
 
 mae(maria,lucas).
 mae(maria, joaquim).
@@ -23,13 +19,19 @@ irmao(X, Y) :-
 neto(A, B) :-
     pai(P, A), pai(A, B),
     mae(M, A), mae(A, B).
-    
-avo(A,C) :- pai(A,B), pai(B,C).
-avo(A,C) :- mae(A,B), mae(B,C).
-avo(A,D) :- pai(A,D), pai(B,D).
-avo(A,D) :- mae(A,D), mae(B,D).
 
+avos(A,C) :- 
+    (pai(A,B), pai(B,C)) ;
+    (mae(A,B), mae(B,C)) ;
+    (pai(A,B), mae(B,C)) ;
+    (mae(A,B), pai(B,C)).
 
+% Avó
+avoF(A,C) :- mae(A,B), pai(B,C). 
+avoF(A,D) :- mae(A,B), mae(B,D).
+% Avô
+avoM(A,C) :- pai(A,B), pai(B, C). 
+avoM(A,D) :- pai(A,B), mae(B, D).
 
 tem_filho(X) :- pai(X, _).
 tem_filho(X) :- mae(X, _).
