@@ -1,11 +1,16 @@
-pai(joao, joaquim).
-pai(joao, lucas).
-pai(pedro, silvia).
+pai(joao,lucas).
+%mae(maria,lucas).
+pai(joao,joaquim).
+%mae(maria,joaquim).
+pai(pedro,silvia).
+%mae(laura,silvia).
 pai(joaquim, bruno).
-mae(silvia, bruno).
-mae(maria, lucas).
+%mae(silvia, bruno).
+
+mae(maria,lucas).
 mae(maria, joaquim).
 mae(laura, silvia).
+mae(silvia, bruno).
 
 % Todos que tem filhos são felizes
 
@@ -21,6 +26,10 @@ neto(A, B) :-
     
 avo(A,C) :- pai(A,B), pai(B,C).
 avo(A,C) :- mae(A,B), mae(B,C).
+avo(A,D) :- pai(A,D), pai(B,D).
+avo(A,D) :- mae(A,D), mae(B,D).
+
+
 
 tem_filho(X) :- pai(X, _).
 tem_filho(X) :- mae(X, _).
