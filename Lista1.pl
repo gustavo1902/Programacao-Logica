@@ -10,5 +10,4 @@ analisa_lista([Head|Tail]) :-
     write('A cabeca da lista eh: '), write(Head), nl,
     write('A cauda da lista eh: '), write(Tail).
 
-
 %2
