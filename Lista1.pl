@@ -11,3 +11,7 @@ analisa_lista([Head|Tail]) :-
     write('A cauda da lista eh: '), write(Tail).
 
 %2
+remove_duplicados([], []).
+remove_duplicados([H|T], [H|T1]) :- 
+    delete(T, H, T2),
+    remove_duplicados(T2, T1).
