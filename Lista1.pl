@@ -17,7 +17,7 @@ remove_duplicados([H|T], [H|T1]) :-
     remove_duplicados(T2, T1).
 
 % 03º exercício
-potencia().
+troca().
 % 04º exercício
 % 05º exercício
 % 06º exercício
