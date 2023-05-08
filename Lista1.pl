@@ -1,11 +1,11 @@
 % 01º exercício
-analisa_lista([]) :-
+analisa_lista([], _, _) :-
     write('A lista está vazia.').
-analisa_lista([Head|Tail]) :-
+analisa_lista([Head], _, _) :-
     Tail = [], % lista com apenas um elemento
     write('A cabeca da lista eh: '), write(Head), nl,
     write('A cauda da lista eh: []').
-analisa_lista([Head|Tail]) :-
+analisa_lista([Head|Tail], _, _) :-
     Tail \= [], % lista com dois ou mais elementos
     write('A cabeca da lista eh: '), write(Head), nl,
     write('A cauda da lista eh: '), write(Tail).
@@ -17,7 +17,10 @@ remove_duplicados([H|T], [H|T1]) :-
     remove_duplicados(T2, T1).
 
 % 03º exercício
-troca().
+troca([], _, _, []).
+troca([X|T], X, Y, [Y|R]) :- troca(T, X, Y, R).
+troca([H|T], X, Y, [H|R]) :- H \= X, troca(T, X, Y, R).
+
 % 04º exercício
 % 05º exercício
 % 06º exercício
