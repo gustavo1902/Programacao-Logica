@@ -39,13 +39,57 @@ distancia((X1,Y1), (X2,Y2), Dist) :-
     Dist is sqrt((X2 - X1) ** 2 + (Y2 - Y1) ** 2).
 
 % 07º exercício
+quadrado(0, _).
+quadrado(N, C) :- 
+    N > 0,
+    write_row(N, C),
+    nl,
+    N1 is N - 1,
+    quadrado(N1, C).
+
+write_row(0, _).
+write_row(N, C) :- 
+    N > 0,
+    write(C),
+    N1 is N - 1,
+    write_row(N1, C).
+
 
 % 08º exercício
+elemento_n(List, N, Elemento) :-
+    N0 is N - 1,
+    nth0(N0, List, Elemento).
+
 % 09º exercício
+media(List, Media) :-
+    sum_list(List, Soma),
+    length(List, Tamanho),
+    Media is Soma / Tamanho.
+
 % 10º exercício
+minimo(List, Result) :- min_list(List, Result).
+
 % 11º exercício
+intervalo(Inf, Sup, [Inf|Result]) :- Inf < Sup, NextInf is Inf + 1, intervalo(NextInf, Sup, Result).
+intervalo(Sup, Sup, []).
+
 % 12º exercício
+mdc(A, 0, A) :- !.
+mdc(A, B, X) :- 
+    R is A mod B,
+    mdc(B, R, X).
+
 % 13º exercício
+ocorrencias(_, [], 0).
+ocorrencias(X, [X|T], N) :- ocorrencias(X, T, N1), N is N1+1.
+ocorrencias(X, [_|T], N) :- ocorrencias(X, T, N).
+
+% 14º exercício
+divisores(N, Div) :- divisores_aux(N, 1, Div).
+
+divisores_aux(N, I, []) :- I > N.
+divisores_aux(N, I, [I|T]) :- N mod I =:= 0, I1 is I+1, divisores_aux(N, I1, T).
+divisores_aux(N, I, T) :- I1 is I+1, divisores_aux(N, I1, T).
 
 %---------------------------------------------------------------%
 
