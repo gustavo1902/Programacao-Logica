@@ -21,6 +21,14 @@ troca([], _, _, []).
 troca([X|T], X, Y, [Y|R]) :- troca(T, X, Y, R).
 troca([H|T], X, Y, [H|R]) :- H \= X, troca(T, X, Y, R).
 
+potencia([], [[]]).
+potencia([H|T], P) :-
+    potencia(T, P1),
+    findall([H|Subset], (member(Subset, P1)), NewSubsets),
+    append(P1, NewSubsets, P).
+
+
+
 % 04º exercício
 % 05º exercício
 % 06º exercício
