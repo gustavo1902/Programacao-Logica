@@ -32,3 +32,8 @@ troca().
 %---------------------------------------------------------------%
 
 gosta(joao, pizza).
+
+soma_lista([], 0).
+soma_lista([Head|Tail], Soma) :-
+    soma_lista(Tail, Soma1),
+    Soma is Head + Soma1.
