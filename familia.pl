@@ -1,41 +1,42 @@
 %fatos
-progenitor(maria, alessandra).
-progenitor(joao, alessandra).
-progenitor(maria, isolda).
-progenitor(joao, isolda).
-progenitor(maria, luis).
-progenitor(joao, luis).
-progenitor(maria, alencar).
-progenitor(joao, alencar).
+mae(maria, alessandra).
+pai(joao, alessandra).
+mae(maria, isolda).
+pai(joao, isolda).
+mae(maria, luis).
+pai(joao, luis).
+mae(maria, alencar).
+pai(joao, alencar).
 
-progenitor(jose, gilberto).
-progenitor(luzia, gilberto).
-progenitor(luzia, gilmar).
-progenitor(jose, gilmar).
-progenitor(luzia, maura).
-progenitor(jose, maura).
-progenitor(luzia, eder).
-progenitor(jose, eder).
+pai(jose, gilberto).
+mae(luzia, gilberto).
+pai(jose, gilmar).
+mae(luzia, gilmar).
+pai(jose, maura).
+mae(luzia, maura).
+pai(jose, eder).
+mae(luzia, eder).
 
-progenitor(alessandra, gustavo).
-progenitor(gilberto, gustavo).
-progenitor(alessandra, guilherme).
-progenitor(gilberto, guilherme).
+mae(alessandra, gustavo).
+pai(gilberto, gustavo).
+mae(alessandra, guilherme).
+pai(gilberto, guilherme).
 
-progenitor(isolda, flavia).
-progenitor(wilson, flavia).
-progenitor(isolda, tiago).
-progenitor(wilson, tiago).
+mae(isolda, flavia).
+pai(wilson, flavia).
+mae(isolda, tiago).
+pai(wilson, tiago).
 
-progenitor(eder, felipe).
-progenitor(ivanilda, felipe).
-progenitor(eder, daniel).
-progenitor(ivanilda, daniel).
+pai(eder, felipe).
+mae(ivanilda, felipe).
+pai(eder, daniel).
+mae(ivanilda, daniel).
 
-progenitor(alencar, walter).
-progenitor(cida, walter).
-progenitor(alencar, sabrina).
-progenitor(cida, sabrina).
+pai(alencar, walter).
+mae(cida, walter).
+pai(alencar, sabrina).
+mae(cida, sabrina).
+
 
 % Regras
 sexo(maria, feminino).
@@ -61,45 +62,37 @@ sexo(daniel, masculino).
 sexo(alencar, masculino).
 sexo(walter, masculino).
 
-% Regras
-irmao(X, Y) :- progenitor(Z, X), progenitor(Z, Y), X \== Y, sexo(X, masculino).
-irma(X, Y) :- progenitor(Z, X), progenitor(Z, Y), X \== Y, sexo(X, feminino).
-irmaos(X, Y) :- progenitor(Z, X), progenitor(Z, Y), X \== Y.
+irmao(X, Y) :- pai(Z, X), pai(Z, Y), X \== Y, sexo(X, masculino).
+irma(X, Y) :- mae(Z, X), mae(Z, Y), X \== Y, sexo(X, feminino).
+irmaos(X, Y) :- pai(Z, X), pai(Z, Y), X \== Y.
 
-descendente(X, Y) :- progenitor(Y, X).
-descendentes(X, Y) :- progenitor(Y, X).
+descendente(X, Y) :- pai(Y, X).
+descendentes(X, Y) :- pai(Y, X).
 
-% Regras
-mae(X, Y) :- progenitor(X, Y), sexo(X, feminino).
-pai(X, Y) :- progenitor(X, Y), sexo(X, masculino).
+mae(X, Y) :- mae(X, Y), sexo(X, feminino).
+pai(X, Y) :- pai(X, Y), sexo(X, masculino).
 
-% Regras
-filho(X, Y) :- progenitor(Y, X), sexo(X, masculino).
-filha(X, Y) :- progenitor(Y, X), sexo(X, feminino).
-filhos(X, Y) :- progenitor(Y, X).
+filho(X, Y) :- pai(Y, X), sexo(X, masculino).
+filha(X, Y) :- pai(Y, X), sexo(X, feminino).
+filhos(X, Y) :- pai(Y, X).
 
-% Regras
-avo(X, Y) :- progenitor(X, Z), progenitor(Z, Y), sexo(X, masculino).
-avoh(X, Y) :- progenitor(X, Z), progenitor(Z, Y), sexo(X, feminino).
-avos(X, Y) :- progenitor(X, Z), progenitor(Z, Y).
+avo(X, Y) :- pai(X, Z), pai(Z, Y), sexo(X, masculino).
+avoh(X, Y) :- mae(X, Z), mae(Z, Y), sexo(X, feminino).
+avos(X, Y) :- pai(X, Z), pai(Z, Y).
 
-% Regras
-tio(X, Y) :- progenitor(Z, Y), irmao(X, Z).
-tia(X, Y) :- progenitor(Z, Y), irma(X, Z).
-tios(X, Y) :- progenitor(Z, Y), irmaos(X, Z).
+tio(X, Y) :- pai(Z, Y), irmao(X, Z).
+tia(X, Y) :- mae(Z, Y), irma(X, Z).
+tios(X, Y) :- pai(Z, Y), irmaos(X, Z).
 
-% Regras
-primo(X, Y) :- progenitor(Z, X), progenitor(W, Y), irmaos(Z, W), sexo(X, masculino).
-prima(X, Y) :- progenitor(Z, X), progenitor(W, Y), irmaos(Z, W), sexo(X, feminino).
-primos(X, Y) :- progenitor(Z, X), progenitor(W, Y), irmaos(Z, W).
+primo(X, Y) :- pai(Z, X), pai(W, Y), irmaos(Z, W), sexo(X, masculino).
+prima(X, Y) :- pai(Z, X), pai(W, Y), irmaos(Z, W), sexo(X, feminino).
+primos(X, Y) :- pai(Z, X), pai(W, Y), irmaos(Z, W).
 
-% Regras
-sobrinho(X, Y) :- progenitor(Z, X), progenitor(W, Y), irmaos(Z, W), sexo(X, masculino).
-sobrinha(X, Y) :- progenitor(Z, X), progenitor(W, Y), irmaos(Z, W), sexo(X, feminino).
-sobrinhos(X, Y) :- progenitor(Z, X), progenitor(W, Y), irmaos(Z, W).
+sobrinho(X, Y) :- pai(Z, X), pai(W, Y), irmaos(Z, W), sexo(X, masculino).
+sobrinha(X, Y) :- pai(Z, X), pai(W, Y), irmaos(Z, W), sexo(X, feminino).
+sobrinhos(X, Y) :- pai(Z, X), pai(W, Y), irmaos(Z, W).
 
-% Regras
-neto(X, Y) :- progenitor(Y, Z), progenitor(Z, X), sexo(X, masculino).
-neta(X, Y) :- progenitor(Y, Z), progenitor(Z, X), sexo(X, feminino).
-netos(X, Y) :- progenitor(Y, Z), progenitor(Z, X).
+neto(X, Y) :- pai(Y, Z), pai(Z, X), sexo(X, masculino).
+neta(X, Y) :- pai(Y, Z), pai(Z, X), sexo(X, feminino).
+netos(X, Y) :- pai(Y, Z), pai(Z, X).
 
