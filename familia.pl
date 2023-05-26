@@ -1,4 +1,6 @@
 %fatos
+mae(tereza, maria)
+pai(tadeu, maria)
 mae(maria, alessandra).
 pai(joao, alessandra).
 mae(maria, isolda).
@@ -8,6 +10,8 @@ pai(joao, luis).
 mae(maria, alencar).
 pai(joao, alencar).
 
+pai(jonas, jose).
+mae(lena, jose).
 pai(jose, gilberto).
 mae(luzia, gilberto).
 pai(jose, gilmar).
@@ -39,6 +43,7 @@ mae(cida, sabrina).
 
 
 % Regras
+sexo(tereza, feminino).
 sexo(maria, feminino).
 sexo(luzia, feminino).
 sexo(alessandra, feminino).
@@ -49,6 +54,7 @@ sexo(cida, feminino).
 sexo(sabrina, feminino).
 sexo(flavia, feminino).
 
+sexo(tadeu, masculino).
 sexo(joao, masculino).
 sexo(jose, masculino).
 sexo(gilberto, masculino).
@@ -65,9 +71,6 @@ sexo(walter, masculino).
 irmao(X, Y) :- pai(Z, X), pai(Z, Y), X \== Y, sexo(X, masculino).
 irma(X, Y) :- mae(Z, X), mae(Z, Y), X \== Y, sexo(X, feminino).
 irmaos(X, Y) :- pai(Z, X), pai(Z, Y), X \== Y.
-
-descendente(X, Y) :- pai(Y, X).
-descendentes(X, Y) :- pai(Y, X).
 
 mae(X, Y) :- mae(X, Y), sexo(X, feminino).
 pai(X, Y) :- pai(X, Y), sexo(X, masculino).
