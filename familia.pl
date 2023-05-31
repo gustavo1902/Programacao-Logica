@@ -1,44 +1,40 @@
 %fatos
-mae(tereza, maria)
-pai(tadeu, maria)
-mae(maria, alessandra).
+pai(tadeu, maria).
 pai(joao, alessandra).
-mae(maria, isolda).
 pai(joao, isolda).
-mae(maria, luis).
 pai(joao, luis).
-mae(maria, alencar).
 pai(joao, alencar).
-
 pai(jonas, jose).
-mae(lena, jose).
 pai(jose, gilberto).
-mae(luzia, gilberto).
 pai(jose, gilmar).
-mae(luzia, gilmar).
 pai(jose, maura).
-mae(luzia, maura).
 pai(jose, eder).
-mae(luzia, eder).
-
-mae(alessandra, gustavo).
 pai(gilberto, gustavo).
-mae(alessandra, guilherme).
 pai(gilberto, guilherme).
-
-mae(isolda, flavia).
 pai(wilson, flavia).
-mae(isolda, tiago).
 pai(wilson, tiago).
-
 pai(eder, felipe).
-mae(ivanilda, felipe).
 pai(eder, daniel).
-mae(ivanilda, daniel).
-
 pai(alencar, walter).
-mae(cida, walter).
 pai(alencar, sabrina).
+
+mae(tereza, maria)
+mae(maria, alessandra).
+mae(maria, isolda).
+mae(maria, luis).
+mae(maria, alencar).
+mae(lena, jose).
+mae(luzia, gilberto).
+mae(luzia, gilmar).
+mae(luzia, maura).
+mae(luzia, eder).
+mae(alessandra, gustavo).
+mae(alessandra, guilherme).
+mae(isolda, flavia).
+mae(isolda, tiago).
+mae(ivanilda, felipe).
+mae(ivanilda, daniel).
+mae(cida, walter).
 mae(cida, sabrina).
 
 
